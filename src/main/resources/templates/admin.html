@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+<h1>Hello, Admin!</h1>
+<br><br>
+<a th:href="@{'/profile'}">My profile page</a>
+<table cellpadding="20">
+    <tr>
+        <th>ID</th>
+        <th>EMAIL</th>
+        <th>FULLNAME</th>
+        <th>ROLES</th>
+        <th>ACTION</th>
+    </tr>
+    <tr th:each="u:${users}">
+        <td th:text="${u.getId()}"></td>
+        <td th:text="${u.getEmail()}"></td>
+        <td th:text="${u.getFullName()}"></td>
+        <td>
+            <div th:each="uRole:${u.getRoles()}">
+                <div th:text="${uRole.getName()}"></div>
+            </div>
+        </td>
+        <td>
+            <form th:action="@{'/deleteUser/'+${u.getId()}}" method="post">
+                <button>Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

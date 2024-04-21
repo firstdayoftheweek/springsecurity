@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello,every one!</h1>
+<a th:href="@{'/'}">index page</a>
+<br><br>
+<form th:action="@{'/addUser'}" method="post">
+    Fullname: <input type="text" name="fullName">
+    Email: <input type="email" name="email">
+    Password: <input type="password" name="password">
+    Repyte password: <input type="password" name="repytePassword">
+    <button>Submit</button>
+</form>
+</body>
+</html>

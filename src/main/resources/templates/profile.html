@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<h1>Hello,Friend!</h1>
+<h1 th:text="${#authentication.getPrincipal().fullName}"></h1>
+<h1 th:text="${#authentication.getPrincipal().email}"></h1>
+<br><br>
+User Roles
+<div th:each="role:${userRoles}">
+    <p th:text="${role.getName()}"></p>
+</div>
+<br><br>
+<h1>Change Password:</h1>
+<form th:action="@{'/updatePassword'}" method="post">
+    Old Password: <input type="text" name="oldPassword">
+    New Password: <input type="text" name="newPassword">
+    Repyte Password: <input type="text" name="repytePassword">
+    <button>Submit</button>
+    <br><br>
+</form>
+<span sec:autorize="hasAnyRole('ROLE_ADMIN')">
+    <a th:href="@{'/admin'}">Admin</a>
+</span>
+<span sec:autorize="hasAnyRole('ROLE_MANAGER')">
+    <a th:href="@{'/manager'}">Manager</a>
+</span>
+<br><br>
+<form th:action="@{'/logout'}" method="post">
+    <button>Logout</button>
+</form>
+</body>
+</html>

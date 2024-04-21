@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Hello,every one!</h1>
+<a th:href="@{'/'}">index page</a>
+<br><br>
+<form th:action="@{'/sign-in'}" method="post" >
+    Email: <input type="text" name="userEmail">
+    Password: <input type="text" name="userPassword">
+    <button>Submit</button>
+</form>
+</body>
+</html>
